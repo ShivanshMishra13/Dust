@@ -1505,6 +1505,26 @@ class BuiltInFunction(BaseFunction):
       return RTResult().success(Number.null)
  execute_append.arg_names = ["list", "value"]
  
+ def execute_AddReal(self, exec_ctx):
+    list= exec_ctx.symbol_table.get("listO")
+    val = exec_ctx.symbol_table.get("val")
+    print("her i am motherufkcer values are"+str(list)+""+str(val))
+
+    if not isinstance(list, List):
+      return RTResult().failure(RTError(
+        self.p_s, self.p_e,
+        "First argument must be list",
+        exec_ctx
+      ))
+
+   
+
+    
+    luli = list.elements = list.elements.extend([val])
+    
+    return RTResult().success(Number.true)
+ execute_AddReal.arg_names = ["listO", "val"]
+ 
  def execute_pop(self, exec_ctx):
     list_ = exec_ctx.symbol_table.get("list")
     index = exec_ctx.symbol_table.get("index")
@@ -1566,6 +1586,7 @@ BuiltInFunction.is_string   = BuiltInFunction("is_string")
 BuiltInFunction.is_list     = BuiltInFunction("is_list")
 BuiltInFunction.is_function = BuiltInFunction("is_function")
 BuiltInFunction.append      = BuiltInFunction("append")
+BuiltInFunction.AddReal      = BuiltInFunction("AddReal")
 BuiltInFunction.pop         = BuiltInFunction("pop")
 BuiltInFunction.extend   = BuiltInFunction("extend")
 
@@ -1861,6 +1882,7 @@ global_symbol_table.set("isFunc", BuiltInFunction.is_function)
 global_symbol_table.set("add", BuiltInFunction.append)
 global_symbol_table.set("pop", BuiltInFunction.pop)
 global_symbol_table.set("extend", BuiltInFunction.extend)
+global_symbol_table.set("ttbnc", BuiltInFunction.AddReal)
 
 
 ###############
