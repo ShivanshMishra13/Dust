@@ -1121,7 +1121,7 @@ class List(Value):
 		else:
 			return None,Value.illegal_operation(self, other)
 	def __str__(self):
-		return f'{",".join(str(x) for x in self.elements)}'
+		return f'[{",".join(str(x) for x in self.elements)}]'
 		
 		
 	def __repr__(self):
@@ -1491,20 +1491,7 @@ class BuiltInFunction(BaseFunction):
  execute_is_function.arg_names = ["value"]
  
  
- def execute_append(self, exec_ctx):
-    list_ = exec_ctx.symbol_table.get("list")
-    value = exec_ctx.symbol_table.get("value")
 
-    if not isinstance(list_, List):
-      return RTResult().failure(RTError(
-        self.p_e, self.p_e,
-        "First argument must be list",
-        exec_ctx
-      ))
-      list_.elements.append(value)
-      return RTResult().success(Number.null)
- execute_append.arg_names = ["list", "value"]
- 
  def execute_AddReal(self, exec_ctx):
     list= exec_ctx.symbol_table.get("listO")
     val = exec_ctx.symbol_table.get("val")
@@ -1585,7 +1572,6 @@ BuiltInFunction.is_number   = BuiltInFunction("is_number")
 BuiltInFunction.is_string   = BuiltInFunction("is_string")
 BuiltInFunction.is_list     = BuiltInFunction("is_list")
 BuiltInFunction.is_function = BuiltInFunction("is_function")
-BuiltInFunction.append      = BuiltInFunction("append")
 BuiltInFunction.AddReal      = BuiltInFunction("AddReal")
 BuiltInFunction.pop         = BuiltInFunction("pop")
 BuiltInFunction.extend   = BuiltInFunction("extend")
@@ -1879,10 +1865,9 @@ global_symbol_table.set("isNum", BuiltInFunction.is_number)
 global_symbol_table.set("isStr", BuiltInFunction.is_string)
 global_symbol_table.set("isList", BuiltInFunction.is_list)
 global_symbol_table.set("isFunc", BuiltInFunction.is_function)
-global_symbol_table.set("add", BuiltInFunction.append)
 global_symbol_table.set("pop", BuiltInFunction.pop)
 global_symbol_table.set("extend", BuiltInFunction.extend)
-global_symbol_table.set("ttbnc", BuiltInFunction.AddReal)
+global_symbol_table.set("append", BuiltInFunction.AddReal)
 
 
 ###############
