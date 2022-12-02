@@ -1,0 +1,51 @@
+var arr=[7,6,9,6]
+var s=67
+
+//operators for arr  
+ access arr/i 
+ add arr+2 
+ remove arr-82 
+ 
+
+
+for i=0 ->10{
+ print("lauda")
+ print("heo")
+ 
+}
+if i==0{
+print(i) 
+i=82+i 
+
+}
+
+if i==0{
+print(i) 
+i=82+i
+
+else{
+
+print("lauda")
+print("lund")
+}
+
+func t(i){
+print("lund")
+print(i)
+
+}
+
+while i<10{
+print(i) 
+var i=i+1 
+
+} 
+
+for i=0->5{
+for h=0->82{
+print(h)
+print("yo")
+
+}
+print("bye")
+}
